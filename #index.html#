@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Time tracking dashboard</title>
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+    * {
+        box-sizing: border-box;
+        font-family: Rubik, sans-serif;
+        --blue: hsl(246, 80%, 60%);
+        --lightRedWork: hsl(15, 100%, 70%);
+        --softBluePlay: hsl(195, 74%, 62%);
+        --lightRedStudy: hsl(348, 100%, 68%);
+        --limeGreenExercise: hsl(145, 58%, 55%);
+        --violetSocial: hsl(264, 64%, 52%);
+        --softOrangeSelfCare: hsl(43, 84%, 65%);
+        --veryDarkBlue: hsl(226, 43%, 10%);
+        --darkBlue: hsl(235, 46%, 20%);
+        --desaturatedBlue: hsl(235, 45%, 61%);
+        --paleBlue: hsl(236, 100%, 87%);
+        /* outline: 0.1px dashed white; */
+    }
+    
+    .mainContainer {
+        display: grid;
+        width: 100vw;
+        height: 100vh;
+        place-items: center;
+    }
+    .dashboard {
+      max-width:  1000px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .personDetails {
+      color: hsl(240, 8%, 95%);
+      padding: 1rem;
+    }
+    .mainSection {
+      display: grid;
+      grid-template-rows: 60% 40%;
+      grid-row: span 2;
+      background-color: #1D214B;
+    }
+    .profile {
+      display: grid;
+      grid-template-rows: 40% 60%;
+      background-color: var(--blue);
+      object-fit: contain;
+    }
+    .profilePictureContainer {
+      padding-left: 1rem;
+      padding-top: 1rem;
+    }
+    #reportDuration {
+      margin: auto 0;
+      font-size: 15px;
+      color: var(--desaturatedBlue);
+    }
+    #reportDuration:hover {
+      cursor: pointer;
+      color: var(--paleBlue);
+    }
+    img.avatar {
+      border: 3px solid white;
+      border-radius: 50%;
+      max-height: 100%;
+    }
+    span {
+      display: block;
+    }
+    
+    .navigation {
+      padding: 1rem;
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+    }
+    .workSection {
+      display: grid;
+      grid-template-rows: 25% 80%;
+    }
+    .workHeader {
+      border-radius: 25px 25px 0 0;
+      background-color: var(--lightRedWork);
+    }
+    .workBody {
+      background-color: #1D214B;
+      border-radius: 25px;
+    }
+    body {
+        color: white;
+        padding: 0;
+        margin: 0;
+        background-color: var(--veryDarkBlue);
+    }
+  </style>
+</head>
+<body>
+  <div class="mainContainer">
+    <div class="dashboard">
+      <div class="mainSection">
+        <div class="profile">
+            <div class="profilePictureContainer">
+              <img class="avatar" src="./images/image-jeremy.png" alt="jeremy" />
+            </div>
+            <div class="personDetails">
+              <span>Report for:</span>
+              <h1 style="font-weight: normal;""> Jeremy Robson </h1>
+            </div>
+        </div>
+        <div class="navigation">
+          <span id="reportDuration">Daily</span>
+          <span id="reportDuration">Weekly</span>
+          <span id="reportDuration">Monthly</span>
+        </div>
+      </div>
+      <div class="workSection">
+        <div class="workHeader">
+          <img src="./images/icon-work.svg" style="float: right; height: 100%; width: auto;" alt="work" />
+        </div>
+        <div class="workBody"></div>
+      </div>
+
+      <div class="workSection">
+        <div class="workHeader">
+          <img src="./images/icon-work.svg" style="float: right; height: 100%; width: auto;" alt="work" />
+        </div>
+        <div class="workBody"></div>
+      </div>
+
+      <div class="workSection">
+        <div class="workHeader">
+          <img src="./images/icon-work.svg" style="float: right; height: 100%; width: auto;" alt="work" />
+        </div>
+        <div class="workBody"></div>
+      </div>
+      <div class="workSection">
+        <div class="workHeader">
+          <img src="./images/icon-work.svg" style="float: right; height: 100%; width: auto;" alt="work" />
+        </div>
+        <div class="workBody"></div>
+      </div>
+
+      <div class="workSection">
+        <div class="workHeader">
+          <img src="./images/icon-work.svg" style="float: right; height: 100%; width: auto;" alt="work" />
+        </div>
+        <div class="workBody"></div>
+      </div>
+      <div class="workSection">
+        <div class="workHeader">
+          <img src="./images/icon-work.svg" style="float: right; height: 100%; width: auto;" alt="work" />
+        </div>
+        <div class="workBody"></div>
+      </div>
+      </div>
+      </div>
+
+</body>
+</html>

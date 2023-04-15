@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Time tracking dashboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+    * {
+        box-sizing: border-box;
+        font-family: Rubik, sans-serif;
+        --blue: hsl(246, 80%, 60%);
+        --lightRedWork: hsl(15, 100%, 70%);
+        --softBluePlay: hsl(195, 74%, 62%);
+        --lightRedStudy: hsl(348, 100%, 68%);
+        --limeGreenExercise: hsl(145, 58%, 55%);
+        --violetSocial: hsl(264, 64%, 52%);
+        --softOrangeSelfCare: hsl(43, 84%, 65%);
+        --veryDarkBlue: hsl(226, 43%, 10%);
+        --darkBlue: hsl(235, 46%, 20%);
+        --desaturatedBlue: hsl(235, 45%, 61%);
+        --paleBlue: hsl(236, 100%, 87%);
+        /* outline: 0.1px dashed white; */
+    }
+    .thinAndSmall {
+      font-weight: 100;
+      font-size: 15px;
+    }
+    .mainContainer {
+        display: grid;
+        width: 100vw;
+        height: 100vh;
+        place-items: center;
+    }
+    .dashboard {
+      max-width:  1000px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .personDetails {
+      color: hsl(240, 8%, 95%);
+      padding: 1rem;
+    }
+    .mainSection {
+      display: grid;
+      grid-template-rows: 60% 40%;
+      grid-row: span 2;
+      background-color: #1D214B;
+      border-radius: 25px;
+    }
+    .profile {
+      display: grid;
+      grid-template-rows: 40% 60%;
+      background-color: var(--blue);
+      border-radius: 25px;
+    }
+    .profilePictureContainer {
+      padding-left: 1rem;
+      padding-top: 1rem;
+    }
+    #reportDuration {
+      margin: auto 0;
+      font-size: 15px;
+      color: var(--desaturatedBlue);
+    }
+    #menu {
+      float: right;
+    }
+    #reportDuration:hover {
+      cursor: pointer;
+      color: var(--paleBlue);
+    }
+    img.avatar {
+      border: 3px solid white;
+      max-width: 100px;
+      border-radius: 50%;
+      max-height: 100%;
+    }
+    .navigation {
+      padding: 1rem;
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      border-radius: 0 0 25px 25px;
+    }
+    .activitySection {
+      display: grid;
+      grid-template-areas: "one";
+    }
+    .activityHeader {
+      grid-area: one;
+      height: 50%;
+      border-radius: 25px 25px 0 0;
+    }
+    .activityBody {
+      display: grid;
+      padding: 10%;
+      grid-area: one;
+      background-color: #1D214B;
+      margin-top: 20%;
+      border-radius: 25px;
+    }
+    #activityTitle {
+      font-size: 18px;
+    }
+    .workHeader {
+      background-color: var(--lightRedWork);
+    }
+    .playHeader {
+      background-color: var(--softBluePlay);
+    }
+    .studyHeader {
+      background-color: var(--lightRedStudy);
+    }
+    .exerciseHeader {
+      background-color: var(--limeGreenExercise);
+    }
+    .socialHeader {
+      background-color: var(--violetSocial);
+    }
+    .selfCareHeader {
+      background-color: var(--softOrangeSelfCare);
+    }
+    .totalActivityTime {
+      display: block;
+      font-weight: normal;
+      font-size: 50px;
+    }
+    .timeSpentLastWeek {
+      color: var(--desaturatedBlue);
+      margin-left: 0;
+    }
+    .verticalCenterContent {
+      display: grid;
+      align-items: center;
+    }
+    .activityBody:hover {
+      cursor: pointer;
+      background-color: #34397B;
+    }
+    body {
+        color: white;
+        padding: 0;
+        margin: 0;
+        background-color: var(--veryDarkBlue);
+    }
+    img.activityIcon {
+      margin-right: 5%;
+      max-height: 50px;
+      float: right;
+      width: auto;
+      float: right;
+      width: auto;
+    }
+    h1, h2, h3 {
+      font-weight: normal;
+    }
+    @media screen and (max-width: 1000px) {
+      .dashboard {
+        display: flex;
+        flex-direction: column;
+      }
+      .mainSection {
+        display: flex;
+        flex-direction: column;
+      }
+      .profile {
+        display: flex;
+      }
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+      }
+      .activityBody {
+        display: block;
+      }
+      .totalActivityTime {
+        font-size: 35px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .timeSpentLastWeek {
+        align-self: center;
+      }
+      .activityTime {
+        display: flex;
+        justify-content: space-between;
+      }
+      .activityBody {
+        margin-top: 10%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="mainContainer">
+    <div class="dashboard">
+      <div class="mainSection">
+        <div class="profile">
+            <div class="profilePictureContainer">
+              <img class="avatar" src="./images/image-jeremy.png" alt="jeremy" />
+            </div>
+            <div class="personDetails">
+              <span class="thinAndSmall">Report for:</span>
+              <h2> Jeremy Robson </h2>
+            </div>
+        </div>
+        <div class="navigation">
+          <span id="reportDuration">Daily</span>
+          <span id="reportDuration">Weekly</span>
+          <span id="reportDuration">Monthly</span>
+        </div>
+      </div>
+
+      <div class="activitySection">
+        <div class="activityHeader workHeader">
+          <img class="activityIcon" src="./images/icon-work.svg" alt="work" />
+        </div>
+        <div class="activityBody">
+          <div>
+            <span id="activityTitle"> Work </span>
+            <span id="menu"> &middot; &middot; &middot; </span>
+          </div>
+
+          <div class="activityTime">
+            <span class="totalActivityTime">32hrs</span>
+            <span class="timeSpentLastWeek">Last Week - 36hrs</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="activitySection">
+        <div class="activityHeader playHeader">
+          <img class="activityIcon" src="./images/icon-play.svg" class="activityIcon" alt="work" />
+        </div>
+        <div class="activityBody">
+          <div>
+            <span id="activityTitle"> Play </span>
+            <span id="menu"> &middot; &middot; &middot; </span>
+          </div>
+
+          <div class="activityTime">
+            <span class="totalActivityTime">10hrs</span>
+            <span class="timeSpentLastWeek">Last Week - 8hrs</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="activitySection">
+        <div class="activityHeader studyHeader">
+          <img class="activityIcon" src="./images/icon-study.svg" alt="work" />
+        </div>
+        <div class="activityBody">
+          <div>
+            <span id="activityTitle"> Study </span>
+            <span id="menu"> &middot; &middot; &middot; </span>
+          </div>
+          <div class="activityTime">
+            <span class="totalActivityTime">4hrs</span>
+            <span class="timeSpentLastWeek">Last Week - 7hrs</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="activitySection">
+        <div class="activityHeader exerciseHeader">
+          <img class="activityIcon" src="./images/icon-exercise.svg" alt="work" />
+        </div>
+        <div class="activityBody">
+          <div>
+            <span id="activityTitle"> Exercise </span>
+            <span id="menu"> &middot; &middot; &middot; </span>
+          </div>
+          <div class="activityTime">
+            <span class="totalActivityTime">4hrs</span>
+            <span class="timeSpentLastWeek">Last Week - 5hrs</span>
+          </div>
+        </div>
+      </div>
+      <div class="activitySection">
+        <div class="activityHeader socialHeader">
+          <img class="activityIcon" src="./images/icon-social.svg" alt="work" />
+        </div>
+        <div class="activityBody"></div>
+        <div class="activityBody">
+          <div>
+            <span id="activityTitle"> Social </span>
+            <span id="menu"> &middot; &middot; &middot; </span>
+          </div>
+          <div class="activityTime">
+            <span class="totalActivityTime">5hrs</span>
+            <span class="timeSpentLastWeek">Last Week - 10hrs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="activitySection">
+        <div class="activityHeader selfCareHeader">
+          <img class="activityIcon" src="./images/icon-self-care.svg" alt="work" />
+        </div>
+        <div class="activityBody">
+          <div>
+            <span id="activityTitle"> Self Care </span>
+            <span id="menu"> &middot; &middot; &middot; </span>
+          </div>
+          <div class="activityTime">
+            <span class="totalActivityTime">2hrs</span>
+            <span class="timeSpentLastWeek">Last Week - 2hrs</span>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+
+</body>
+</html>
